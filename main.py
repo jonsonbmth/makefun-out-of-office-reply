@@ -16,6 +16,7 @@ def main():
     # The brief: one out-of-office auto-reply, under 160 characters,
     # in the voice of an AI agent heading off on vacation.
     assert 1 <= len(LINE) < 160, "line must be under 160 characters"
+    assert "\n" not in LINE and "\r" not in LINE, "line must be a single line"
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
